@@ -3,8 +3,13 @@
 #include <stdlib.h>
 #include <string.h>
 
+uint16_t get_bit(uint16_t x, int n) {
+    return (x >> n) & 1; 
+}
+
 void lfsr_calculate(uint16_t *reg) {
-    /* YOUR CODE HERE */
+    int v = ((get_bit(*reg, 0) ^ get_bit(*reg, 2)) ^ get_bit(*reg, 3)) ^ get_bit(*reg, 5);
+    *reg = (*reg >> 1) ^ (v << 15);
 }
 
 int main() {
