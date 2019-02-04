@@ -121,3 +121,6 @@ $RECYCLE.BIN/
 *.in
 *.out
 *.ans
+
+.vscode
+.idea
