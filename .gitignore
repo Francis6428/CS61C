@@ -1,0 +1,123 @@
+# Ignore all
+*
+ 
+# Unignore all with extensions
+!*.*
+ 
+# Unignore all dirs
+!*/
+ 
+### Above combination will ignore all files without extension ###
+# Ignore vim temp files
+*.swp
+*~
+
+# Ignore files with extension `.class` & `.sm`
+*.class
+*.sm
+ 
+# Ignore `bin` dir
+bin/
+# or
+*/bin/*
+ 
+# Unignore all `.jar` in `bin` dir
+!*/bin/*.jar
+ 
+# Ignore all `library.jar` in `bin` dir
+*/bin/library.jar
+ 
+# Ignore a file with extension
+relative/path/to/dir/filename.extension
+ 
+# Ignore a file without extension
+relative/path/to/dir/anotherfile
+
+# Compiled Object files
+*.slo
+*.lo
+*.o
+*.obj
+
+# Precompiled Headers
+*.gch
+*.pch
+
+# Compiled Dynamic libraries
+*.so
+*.dylib
+*.dll
+*.o
+
+# I/O data
+*.in
+*.out
+
+#vim 
+*.swp
+
+# Fortran module files
+*.mod
+
+# Compiled Static libraries
+*.lai
+*.la
+*.a
+*.lib
+
+# Executables
+*.exe
+*.out
+*.app
+
+# =========================
+# Operating System Files
+# =========================
+
+# OSX
+# =========================
+
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Thumbnails
+._*
+
+# Files that might appear on external disk
+.Spotlight-V100
+.Trashes
+
+# Directories potentially created on remote AFP share
+.AppleDB
+.AppleDesktop
+Network Trash Folder
+Temporary Items
+.apdisk
+
+# Windows
+# =========================
+
+# Windows image file caches
+Thumbs.db
+ehthumbs.db
+
+# Folder config file
+Desktop.ini
+
+# Recycle Bin used on file shares
+$RECYCLE.BIN/
+
+# Windows Installer files
+*.cab
+*.msi
+*.msm
+*.msp
+
+# Windows shortcuts
+*.lnk
+
+#OI files
+*.in
+*.out
+*.ans
