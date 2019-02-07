@@ -1,6 +1,6 @@
 
 int source[] = {3, 1, 4, 1, 5, 9, 0};
-int dest[10];
+int dest[]   = {1, 1, 1, 1, 1, 1, 0, 0, 0, 0};
 
 int main() {
     int k;
