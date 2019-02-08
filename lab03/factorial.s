@@ -1,6 +1,5 @@
 .data
 test_input: .word 3 6 7 8
-num_inputs: .word 4
 
 .text
 main:
