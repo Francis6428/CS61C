@@ -94,7 +94,7 @@ loop:   #do...
     bne s1, t0, loop    # ... while i!= 10
     lw  ra, 0(sp)
     lw  s0, 4(sp)
-    lw  s1, 4(sp)
+    lw  s1, 8(sp)
     addi sp, sp, 12
     jr ra
 
