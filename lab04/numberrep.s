@@ -31,6 +31,7 @@ char_loop:
     add t4, t2, t3
     lw t5, 0(t4)
     beq t0, t5, success
+    addi t1 t1 -1
     j char_loop
 success:
     addi a0, x0, 1
