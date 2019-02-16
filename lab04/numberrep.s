@@ -9,13 +9,16 @@ validate_number:
 
     # Before this line, you should set a0 to be 1 or 0 depending on the
     # validity of the given number and base.
+    # The following block convert 0 -> '0' and 1 -> '1' and prints the
+    # character.
     add a1, x0, a0
     addi a1, a1, 48
     addi a0, x0, 11
     ecall
 
+    # Terminate the program
     addi a0, x0, 10
-    ecall #Terminate the program
+    ecall
 
 validate_number_char:
     # a0 is the character, a1 is the base
