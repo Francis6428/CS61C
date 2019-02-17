@@ -27,10 +27,9 @@ validate_number_char:
     la t2, allowed_chars
 char_loop:
     blt t1, x0, failure
-    slli t3, t1, 2
-    add t4, t2, t3
-    lw t5, 0(t4)
-    beq t0, t5, success
+    add t3, t2, t1
+    lb t4, 0(t3)
+    beq t0, t4, success
     addi t1 t1 -1
     j char_loop
 success:
