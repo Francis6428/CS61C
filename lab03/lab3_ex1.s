@@ -1,6 +1,6 @@
-.data
-.word 2, 4, 6, 8
-n: .word 9
+.data                   # where static data is stored.
+.word 2, 4, 6, 8        # static data
+n: .word 9              # global variable n
 
 .text
 main:   add     t0, x0, x0
@@ -19,3 +19,6 @@ finish: addi    a0, x0, 1
         addi    a0, x0, 10
         ecall # terminate ecall
 
+# output number: 34
+# address of n: 0x10000010
+# calculating the 13th fib: modify x28 to 0x0000000D

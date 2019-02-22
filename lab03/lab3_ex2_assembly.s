@@ -22,22 +22,27 @@ dest:
 .text
 main:
 	addi t0, x0, 0
-	la t1, source
-	la t2, dest
-loop:
-	slli t3, t0, 2
+	la t1, source 	# t1 points to source
+	la t2, dest		# t2 points to dest
+loop:				# loop points to the loop
+	slli t3, t0, 2 	# here k*4 is the offset to the pointer
 	add t4, t1, t3
-	lw t5, 0(t4)
+	lw t5, 0(t4) 	# t4 points to source
 	beq t5, x0, exit
+	slli t5, t5, 1 	# added one line here
 	add t6, t2, t3
-	sw t5, 0(t6)
-	addi t0, t0, 1
+	sw t5, 0(t6)	# t6 points to dest
+	addi t0, t0, 2 	# t0 represents k; change 1 to 2
 	jal x0, loop
 exit:
 	jal ra, print_lists
 	addi a0, x0, 10
 	add a1, x0, x0
 	ecall # Terminate ecall
+
+# output 
+# 3 1 4 1 5 9 
+# 6 1 8 1 10 1 
 
 # For this part of the lab, you don't need to understand anything
 # below this line.
