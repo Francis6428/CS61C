@@ -42,4 +42,23 @@ main_exit:
 	ecall # Exit
 
 factorial:
-	# YOUR CODE HERE
+    li t0 1	
+    mv t1 a0
+    beq t1 t0 return
+    beq t1 zero return
+    addi a0 t1 -1
+    
+    addi sp sp -8
+    sw ra 0(sp)
+    sw t1 4(sp)
+    
+    jal ra, factorial
+    
+    lw ra 0(sp)
+    lw t1 4(sp)
+    addi sp sp 8
+    
+    mul t1 t1 a0
+return:
+    mv a0 t1
+    jr ra
