@@ -1,0 +1,7 @@
+f(-3) should be 6, and it is: 6
+f(-2) should be 61, and it is: 61
+f(-1) should be 17, and it is: 17
+f(0) should be -38, and it is: -38
+f(1) should be 19, and it is: 19
+f(2) should be 42, and it is: 42
+f(3) should be 5, and it is: 5

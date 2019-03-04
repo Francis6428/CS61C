@@ -125,3 +125,4 @@ $RECYCLE.BIN/
 
 .vscode
 .idea
+*.DS_Store
