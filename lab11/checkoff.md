@@ -113,3 +113,67 @@ Each time the number sequence is different.
 
 # Exercise 5
 
+```c
+void v_add_optimized_adjacent(double* x, double* y, double* z) {
+	#pragma omp parallel
+	{
+		int gap = omp_get_num_threads();
+		int ind = omp_get_thread_num();
+		for(int i = ind; i < ARRAY_SIZE; i += gap)
+			z[i] = x[i] + y[i];
+	}
+}
+
+// Edit this function (Method 2) 
+void v_add_optimized_chunks(double* x, double* y, double* z) {
+          #pragma omp parallel
+	{
+		int n = omp_get_thread_num();
+		int chunk_size = ARRAY_SIZE / omp_get_num_threads();
+		int rem = ARRAY_SIZE % omp_get_num_threads();
+		for(int i = n * chunk_size; i < ((n + 1) * chunk_size); i++) {
+			z[i] = x[i] + y[i];
+		}
+		if (rem != 0) {
+			for (int i = ARRAY_SIZE - rem; i < ARRAY_SIZE; i++) {
+				z[i] = x[i] + y[i];
+			}
+		}
+	}
+}
+```
+
+chunks work better due to better spatial locality.
+
+# Exercise 6
+
+```c
+// EDIT THIS FUNCTION PART 1
+double dotp_manual_optimized(double* x, double* y) {
+     double global_sum = 0.0;
+	#pragma omp parallel
+	{
+		double temp = 0.0;
+		#pragma omp for
+		for(int i=0; i<ARRAY_SIZE; i++) {
+			temp += x[i] * y[i];
+		}
+		#pragma omp critical
+		global_sum += temp;
+	}
+	return global_sum;
+}
+
+// EDIT THIS FUNCTION PART 2
+double dotp_reduction_optimized(double* x, double* y) {
+     double global_sum = 0.0;
+	#pragma omp parallel
+	{
+		#pragma omp for reduction(+ : global_sum)
+		for(int i=0; i<ARRAY_SIZE; i++)
+			global_sum += x[i] * y[i];
+	}
+	return global_sum;
+}
+```
+
