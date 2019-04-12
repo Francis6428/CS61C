@@ -53,6 +53,8 @@ long long int sum_simd(unsigned int vals[NUM_ELEMS]) {
 }
 ```
 
+# Exercise 3
+
 ```c
 long long int sum_simd_unrolled(unsigned int vals[NUM_ELEMS]) {
 	clock_t start = clock();
@@ -104,3 +106,10 @@ long long int sum_simd_unrolled(unsigned int vals[NUM_ELEMS]) {
 	return result;
 }
 ```
+
+# Exercise 4
+
+Each time the number sequence is different. 
+
+# Exercise 5
+
