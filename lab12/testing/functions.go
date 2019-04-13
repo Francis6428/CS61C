@@ -12,7 +12,7 @@ func AbsSum(n []int) int {
 }
 
 func Prod(n []int) int {
-	total := 0
+	total := 1
 	for _, x := range n {
 		total *= x
 	}

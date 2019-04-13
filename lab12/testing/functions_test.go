@@ -6,7 +6,7 @@ func TestAbsSumPos(t *testing.T) {
 	x := []int{12, 14, 16}
 	sum := AbsSum(x)
 	if sum != 42 {
-		t.Error("Expected 42, got ", sum)
+		t.Error("Expected 42, got", sum)
 	}
 }
 
