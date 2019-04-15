@@ -36,7 +36,8 @@ func print_fibonacci(n int) {
 	b := 1
 	if (n >= 1) {
 		fmt.Print(a, " ")
-	} else if (n >= 2) {
+	}
+	if (n >= 2) {
 		fmt.Print(b, " ")
 	}
 	for i := 3; i <= n; i += 1 {
