@@ -3,7 +3,7 @@ package main
 import "fmt"
 
 func return_range(n int, c chan int) {
-	for i := 0; i < n; i++ {
+	for i := 1; i <= n; i++ {
 		c <- i
 	}
 	close(c)
