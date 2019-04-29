@@ -77,21 +77,40 @@ double get_eigenvalue(double *A, double *b, int size) {
     return vec_vec_mul(b, mul, size) / vec_vec_mul(b, b, size);
 }
 
-int main() {
-    srand(1);
+int is_close(double *a, double *b, int size) {
+    double total_diff = 0;
+    for (int i = 0; i < size; i++) {
+        total_diff += fabs(a[i] - b[i]);
+    }
+    return total_diff < 0.0000000001;
+}
 
+int main() {
     double *A = load_from_file("A.txt", SIZE * SIZE);
     double b[SIZE];
     for (int i = 0; i < SIZE; i++) {
         b[i] = 1;
     }
-
     clock_t start = clock();
     power_method(A, b, SIZE);
     clock_t end = clock();
 
-    printf("The first eigenvalue is: %f\n", get_eigenvalue(A, b, SIZE));
-    printf("Time elapsed: %f seconds\n", ((double) end - start) / CLOCKS_PER_SEC);
+    printf("NAIVE: The first eigenvalue is: %f\n", get_eigenvalue(A, b, SIZE));
+    printf("NAIVE: Time elapsed: %f seconds\n", ((double) end - start) / CLOCKS_PER_SEC);
+
+    double simd_b[SIZE];
+    for (int i = 0; i < SIZE; i++) {
+        simd_b[i] = 1;
+    }
+    start = clock();
+    power_method_simd(A, simd_b, SIZE);
+    end = clock();
+    if (is_close(simd_b, b, SIZE)) {
+        printf("SIMD: The first eigenvalue is: %f\n", get_eigenvalue(A, b, SIZE));
+        printf("SIMD: Time elapsed: %f seconds\n", ((double) end - start) / CLOCKS_PER_SEC);
+    } else {
+        printf("SIMD version doesn't match the NAIVE version!");
+    }
 
     free(A);
 }
