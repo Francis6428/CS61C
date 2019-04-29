@@ -106,10 +106,10 @@ int main() {
     power_method_simd(A, simd_b, SIZE);
     end = clock();
     if (is_close(simd_b, b, SIZE)) {
-        printf("SIMD: The first eigenvalue is: %f\n", get_eigenvalue(A, b, SIZE));
+        printf("SIMD: The first eigenvalue is: %f\n", get_eigenvalue(A, simd_b, SIZE));
         printf("SIMD: Time elapsed: %f seconds\n", ((double) end - start) / CLOCKS_PER_SEC);
     } else {
-        printf("SIMD version doesn't match the NAIVE version!");
+        printf("SIMD version doesn't match the NAIVE version!\n");
     }
 
     free(A);
