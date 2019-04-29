@@ -20,11 +20,13 @@ void print_vec(double *vec, int size) {
     printf("\n");
 }
 
-double *generate(int size) {
+double *load_from_file(char *filename, int size) {
     double *arr = malloc(sizeof(double) * size);
+    FILE *fin = fopen(filename, "r");
     for (int i = 0; i < size; i++) {
-        arr[i] = ((double) rand()) / ((double) RAND_MAX);
+        fscanf(fin, "%lf ", arr + i);
     }
+    fclose(fin);
     return arr;
 }
 
@@ -78,7 +80,7 @@ double get_eigenvalue(double *A, double *b, int size) {
 int main() {
     srand(1);
 
-    double *A = generate(SIZE * SIZE);
+    double *A = load_from_file("A.txt", SIZE * SIZE);
     double b[SIZE];
     for (int i = 0; i < SIZE; i++) {
         b[i] = 1;
