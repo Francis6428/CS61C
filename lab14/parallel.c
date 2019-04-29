@@ -1,24 +1,24 @@
 #include <stdlib.h>
 #include <omp.h>
 
-#define ARR_SIZE 10000
+#define ARR_SIZE 1024
 
 // When lock is 0, it is free to be acquired.
 // Otherwise, someone has the lock.
 int lock = 0;
 
 int *build_array() {
-    int A[100];
-    int B[100];
-    for (int i = 0; i < 100; i++) {
+    int A[32];
+    int B[32];
+    for (int i = 0; i < 32; i++) {
         A[i] = rand();
         B[i] = rand();
     }
 
     int *arr = malloc(sizeof(int) * ARR_SIZE);
     // Analyze the hit rate for the following for loop
-    for (int i = 0; i < 10000; i++) {
-        arr[i] = A[i / 100] + B[i % 100];
+    for (int i = 0; i < ARR_SIZE; i++) {
+        arr[i] = A[i / 32] + B[i % 32];
     }
 
     return arr;
